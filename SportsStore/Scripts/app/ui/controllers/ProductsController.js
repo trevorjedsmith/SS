@@ -1,14 +1,14 @@
 var SportsStore;
 (function (SportsStore) {
-    var ReplayController = (function () {
-        function ReplayController() {
+    var ProductsController = (function () {
+        function ProductsController() {
             this.dataService = new SportsStore.SportsStoreDataService($, 'api/products/getAllProducts');
         }
-        ReplayController.prototype.PageLoad = function () {
+        ProductsController.prototype.PageLoad = function () {
             var viewModel = new SportsStore.ProductsViewModel(this.dataService);
             ko.applyBindings(viewModel);
         };
-        return ReplayController;
+        return ProductsController;
     }());
-    SportsStore.ReplayController = ReplayController;
+    SportsStore.ProductsController = ProductsController;
 })(SportsStore || (SportsStore = {}));

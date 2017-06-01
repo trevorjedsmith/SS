@@ -1,6 +1,7 @@
 ﻿/// <reference path="../../typings/globals/toastr/index.d.ts" />
 
 
+
 namespace SportsStore {
     export class Logger {
 

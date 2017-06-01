@@ -1,6 +1,6 @@
 ﻿namespace SportsStore {
 
-    export class ReplayController {
+    export class ProductsController {
         private dataService: SportsStore.SportsStoreDataService<any>;
         private containerElementId: string;
 

@@ -1,5 +1,6 @@
 ﻿using SportsStore.Domain.Interfaces;
 using SportsStore.Helpers;
+using SportsStore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +19,27 @@ namespace SportsStore.Api
             _productService = productService;
         }
 
+
         [HttpGet]
         [Route("api/products/getAllProducts")]
-        public IHttpActionResult GetAllProducts()
+        public IHttpActionResult GetAllProducts(string Category = "Home")
         {
             try
             {
-                return Ok(_productService.GetAll());
+                var products = _productService.GetAll();
+                var categories = products.Select(x => x.Category).Distinct().OrderBy(x => x);
+
+                if(Category != "Home")
+                {
+                    products = products.Where(x => x.Category == Category);
+                }
+
+                ProductsViewModel pvm = new ProductsViewModel
+                {
+                    Products = products,
+                    Categories = categories
+                };
+                return Ok(pvm);
             }
             catch(Exception ex)
             {
