@@ -13,5 +13,9 @@ namespace SportsStore.Domain.Abstract
         DbSet<TEntity> GetDbSet<TEntity>() where TEntity : class;
 
         DbSet<Product> Products { get; set; }
+
+        DbSet<Order> Orders { get; set; }
+
+        DbSet<OrderLine> OrderLines { get; set; }
     }
 }

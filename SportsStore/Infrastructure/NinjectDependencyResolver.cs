@@ -33,6 +33,7 @@ namespace SportsStore.Infrastructure
             kernel.Bind<IDbContext>().To<DataContext>();
             kernel.Bind<IDbSession>().To<DbSession>();
             kernel.Bind<IProductService>().To<ProductService>();
+            kernel.Bind<IOrderService>().To<OrderService>();
             kernel.Bind(typeof(IEntityRepository<>)).To(typeof(EntityRepository<>));
         }
     }

@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+@section scripts{
+    <script src="~/Scripts/app/common/Constants.js"></script>
+    <script src="~/Scripts/app/data/SportsStoreDataService.js"></script>
+    <script src="~/Scripts/app/common/Logger.js"></script>
+    <script src="~/Scripts/app/ui/viewmodels/CartViewModel.js"></script>
+    <script src="~/Scripts/app/ui/controllers/CartController.js"></script>
+
+    <script>
+        (function () {
+             var cartController = new SportsStore.CartController();
+             cartController.PageLoad();
+         })();
+    </script>
+
+}
+
+<div class="jumbotron" data-bind="visible: cartList().length === 0">
+    <p>You have no items in the cart..</p>
+    <a href="@Url.Action("List","Products")" class="btn btn-primary">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        Continue Shopping
+    </a>
+
+</div>
+<div data-bind="visible: cartList().length > 0">
+    <h2 class="text-muted text-center">Your Cart</h2>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Quantity</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th class="text-right">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: cartList">
+                <tr>
+                    <td data-bind="text: $data.Quantity"></td>
+                    <td data-bind="text: $data.Product.Name"></td>
+                    <td data-bind="text: '$' + $data.Product.Price.toFixed(2)"></td>
+                    <td class="text-right" data-bind="text: '$' + ($data.Quantity * $data.Product.Price).toFixed(2)"></td>
+                    <td>
+                        <button class="btn btn-danger btn-sm pull-right" data-bind="click: $parent.removeItem">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td>Total:</td>
+                    <td class="text-right" data-bind="text: '$' + cartTotal().toFixed(2)"></td>
+                </tr>
+            </tfoot>
+        </table>
+
+    <div class="text-center">
+        <a href="@Url.Action("List","Products")" style="width:200px" class="btn btn-primary">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            Continue Shopping
+        </a>
+        <a href="@Url.Action("Index","Order")" style="width:200px" class="btn btn-default">
+            <span class="glyphicon glyphicon-usd"></span>
+            Place Order
+        </a>
+    </div>
+</div>
+
+
+
