@@ -18,7 +18,7 @@
     </script>
 
 }
-
+@Html.Partial("_Navigation")
 <div class="jumbotron" data-bind="visible: cartList().length === 0">
     <p>You have no items in the cart..</p>
     <a href="@Url.Action("List","Products")" class="btn btn-primary">
