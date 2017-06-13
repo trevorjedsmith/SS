@@ -19,5 +19,8 @@ namespace SportsStore.Models
         public decimal Price { get; set; }
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; }
+
+        public byte[] ImageData { get; set; }
+        public string ImageMineType { get; set; }
     }
 }
