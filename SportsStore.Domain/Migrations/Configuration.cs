@@ -18,6 +18,8 @@ namespace SportsStore.Domain.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
+            if (!context.Products.Any())
+            {
             new List<Product> {
             new Product() { Name = "Kayak", Description = "A boat for one person",
             Category = "Watersports", Price = 275m },
@@ -48,6 +50,8 @@ namespace SportsStore.Domain.Migrations
             Category = "Chess", Price = 1200m },
             }.ForEach(product => context.Products.Add(product));
             context.SaveChanges();
+            }
+     
         }
     }
 }
