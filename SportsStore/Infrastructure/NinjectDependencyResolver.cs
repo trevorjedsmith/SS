@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using SportsStore.Authentication;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Concrete;
 using SportsStore.Domain.Interfaces;
@@ -34,6 +35,7 @@ namespace SportsStore.Infrastructure
             kernel.Bind<IDbSession>().To<DbSession>();
             kernel.Bind<IProductService>().To<ProductService>();
             kernel.Bind<IOrderService>().To<OrderService>();
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
             kernel.Bind(typeof(IEntityRepository<>)).To(typeof(EntityRepository<>));
         }
     }
