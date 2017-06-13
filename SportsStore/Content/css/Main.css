@@ -24,3 +24,8 @@
 .panel-body {
     word-break: break-all
 }
+
+.error{
+    font-family:'Times New Roman';
+    color:red
+}

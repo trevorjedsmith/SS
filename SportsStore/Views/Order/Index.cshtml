@@ -12,9 +12,52 @@
 
     <script>
         (function () {
+             var dataService = new SportsStore.SportsStoreDataService($, 'Carts/GetAllItems');
+             var viewModel = new SportsStore.OrderViewModel(dataService);
              var orderController = new SportsStore.OrderController();
-             orderController.PageLoad();
-         })();
+             orderController.PageLoad(viewModel);
+
+             $('#orderForm').validate({
+                 submitHandler: function () {
+                     viewModel.submitOrder();
+                 },
+
+                 rules: {
+                     name: {
+                         required: true
+                     },
+                     line1: {
+                         required: true
+                     },
+                     city: {
+                         required: true
+                     },
+                     state: {
+                         required: true
+                     },
+                     zip: {
+                         required: true
+                     },
+                     country: {
+                         required: true
+                     },
+                     giftwrap: {
+                         required: true
+                     }
+                     
+                 },
+                 messages: {
+                     name: "Please enter your name",
+                     line1: "Please enter at least 1 line of address",
+                     city: "Please enter city",
+                     state: "Please enter state",
+                     zip: "Please enter postcode",
+                     country: "Please enter country",
+                     giftwrap:"Please enter a giftwrap option"
+                 }
+             })
+        })();
+
     </script>
 
 }
@@ -28,40 +71,42 @@
 <p>Please enter you details and we will ship your good straight away</p>
 
 
+
+<form id="orderForm">
     <h3 class="text-muted">Ship To</h3>
     <div class="form-group">
         <label>Name:</label>
-        <input class="form-control" data-bind="value: name" name="name" id="name" required />
+        <input class="form-control" data-bind="value: name" name="name" id="name" />
     </div>
 
     <h3 class="text-muted">Address</h3>
     <div class="form-group">
         <label>Line1:</label>
-        <input class="form-control" data-bind="value: line1" name="line1" id="line1" required />
+        <input class="form-control" data-bind="value: line1" name="line1" id="line1" />
     </div>
     <div class="form-group">
         <label>Line2:</label>
-        <input class="form-control" data-bind="value: line2" name="line2" id="line2" required />
+        <input class="form-control" data-bind="value: line2" name="line2" id="line2" />
     </div>
     <div class="form-group">
         <label>Line3:</label>
-        <input class="form-control" data-bind="value: line3" name="line3" id="line3" required />
+        <input class="form-control" data-bind="value: line3" name="line3" id="line3" />
     </div>
     <div class="form-group">
         <label>City:</label>
-        <input class="form-control" data-bind="value: city" name="city" id="city" required />
+        <input class="form-control" data-bind="value: city" name="city" id="city" />
     </div>
     <div class="form-group">
         <label>State:</label>
-        <input class="form-control" data-bind="value: state" name="state" id="state" required />
+        <input class="form-control" data-bind="value: state" name="state" id="state" />
     </div>
     <div class="form-group">
         <label>Zip:</label>
-        <input class="form-control" data-bind="value: zip" name="zip" id="zip" required />
+        <input class="form-control" data-bind="value: zip" name="zip" id="zip" />
     </div>
     <div class="form-group">
         <label>Country:</label>
-        <input class="form-control" data-bind="value: country" name="country" id="country" required />
+        <input class="form-control" data-bind="value: country" name="country" id="country" />
     </div>
 
     <h3 class="text-muted">Options</h3>
@@ -71,8 +116,11 @@
 
     <div class="text-center">
         <button class="btn btn-danger" style="width:200px;" data-bind="click: cancelConfirm">Cancel Order</button>
-        <button type="submit" class="btn btn-success" style="width:200px;" data-bind="click: submitOrder">Submit Order</button>
+        <button type="submit" class="btn btn-success" style="width:200px;">Submit Order</button>
     </div>
+</form>
+
+
 
 
 <div id="del-confirm" class="modal">

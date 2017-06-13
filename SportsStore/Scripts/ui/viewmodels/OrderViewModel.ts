@@ -31,7 +31,7 @@
             this.logger = new SportsStore.Logger();
 
             this.id = ko.observable(0);
-            this.name = ko.observable('');
+            this.name = ko.observable('').extend({ required: true });
             this.line1 = ko.observable('');
             this.line2 = ko.observable('');
             this.line3 = ko.observable('');
@@ -93,7 +93,8 @@
                 console.log('Order Return');
                 console.log(data);
                 window.location.href = "Success?OrderId=" + data.Order.Id;
-            }).fail((error) => {
+            }).fail((error : any) => {
+                console.log(error);
                 this.logger.logError('There was an error please try again', error, 'Create Order', true);
                 }).always(() => {
                     this.hideModal();
