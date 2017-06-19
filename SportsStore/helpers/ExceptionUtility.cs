@@ -17,8 +17,8 @@ namespace SportsStore.Helpers
         {
             // Include logic for logging exceptions
             // Get the absolute path to the log file
-            string logFile = "App_Data/ErrorLog.txt";
-            logFile = HttpContext.Current.Server.MapPath(logFile);
+            string logFile = "C:\\CustomAppLogs\\SportsStore\\";
+            //logFile = HttpContext.Current.Server.MapPath(logFile);
 
             // Open the log file for append and write the log
             StreamWriter sw = new StreamWriter(logFile, true);

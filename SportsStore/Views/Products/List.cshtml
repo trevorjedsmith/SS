@@ -121,7 +121,7 @@
     <div data-bind="foreach: productsList" class="row">
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
-                <img style="width:100px; height:100px;" data-bind="attr:{src: '/Products/GetImage' + '?productId=' + $data.ProductID }" alt="">
+                <img style="width:100px; height:100px;" data-bind="attr:{src: '@Url.Action("GetImage","Products")' + '?productId=' + $data.ProductID }" alt="">
                 <div class="caption">
                     <h4 data-bind="text: '$' +  $data.Price.toFixed(2)" class="pull-right"></h4>
                     <h4>

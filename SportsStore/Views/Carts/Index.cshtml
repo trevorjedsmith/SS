@@ -44,7 +44,7 @@
             <tbody data-bind="foreach: cartList">
                 <tr>
 
-                    <td><img style="width:60px; height:60px; border:inset" data-bind="attr:{src: '/Products/GetImage' + '?productId=' + $data.Product.ProductID }" alt=""></td>
+                    <td><img style="width:60px; height:60px; border:inset" data-bind="attr:{src: '@Url.Action("GetImage","Products")' + '?productId=' + $data.Product.ProductID }" alt=""></td>
                     <td data-bind="text: $data.Quantity"></td>
                     <td data-bind="text: $data.Product.Name"></td>
                     <td data-bind="text: '$' + $data.Product.Price.toFixed(2)"></td>

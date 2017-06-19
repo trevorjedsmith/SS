@@ -44,7 +44,7 @@ namespace SportsStore.Api
             catch(Exception ex)
             {
                 ExceptionUtility.LogException(ex, "Products/GetAllProducts");
-                return Content(HttpStatusCode.BadRequest, ex);
+                return Content(HttpStatusCode.BadRequest, ex.Message);
             }
         }
     }
